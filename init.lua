@@ -91,7 +91,7 @@ vim.g.have_nerd_font = false
 -- NOTE: You can change these options as you wish!
 --  For more options, you can see `:help option-list`
 
-vim.opt.autochdir = true
+-- vim.opt.autochdir = true
 
 -- Expand tabs
 vim.opt.expandtab = true
@@ -203,8 +203,25 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 -- vim.keymap.set('n', '<S-o>', 'O<Esc>')
 -- vim.keymap.set('n', 'o', 'o<Esc>')
 
-vim.keymap.set('n', '<C-Up>', '10gk', { noremap = true, silent = true })
-vim.keymap.set('n', '<C-Down>', '10gj', { noremap = true, silent = true })
+-- insert keymaps
+-- move 5 up or down when using ctrl
+vim.keymap.set('i', '<C-Up>', '<C-o>5gk')
+vim.keymap.set('i', '<C-Down>', '<C-o>5gj')
+
+-- delete until back or end using ctrl
+vim.keymap.set('i', '<C-Del>', '<C-o>de')
+vim.keymap.set('i', '<C-BS>', '<C-o>db')
+
+-- normal mode keymaps
+-- move 10 up or down when using ctrl
+vim.keymap.set('n', '<C-Up>', '10gk')
+vim.keymap.set('n', '<C-Down>', '10gj')
+--
+-- change without buffering
+vim.keymap.set({ 'n', 'v' }, 'c', '"_c')
+
+-- open Man for the word under the cursor
+vim.keymap.set('n', '<F1>', 'K')
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
@@ -900,8 +917,8 @@ require('lazy').setup({
   -- require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
   -- require 'kickstart.plugins.autopairs',
-  -- require 'kickstart.plugins.neo-tree',
-  -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
+  require 'kickstart.plugins.neo-tree',
+  require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
   -- NOTE: The import below can automatically add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --    This is the easiest way to modularize your config.

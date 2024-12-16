@@ -214,8 +214,8 @@ vim.keymap.set('i', '<C-BS>', '<C-o>db')
 
 -- normal mode keymaps
 -- move 10 up or down when using ctrl
-vim.keymap.set('n', '<C-Up>', '10gk')
-vim.keymap.set('n', '<C-Down>', '10gj')
+vim.keymap.set('n', '<C-Up>', '5gk')
+vim.keymap.set('n', '<C-Down>', '5gj')
 --
 -- change without buffering
 vim.keymap.set({ 'n', 'v' }, 'c', '"_c')
@@ -630,7 +630,23 @@ require('lazy').setup({
           },
         },
       }
-
+      --      local lspconfig = require 'lspconfig'
+      --      local util = require 'lspconfig/util'
+      --      local configs = require 'lspconfig.configs'
+      --      if not configs.c3_lsp then
+      --        configs.c3_lsp = {
+      --          default_config = {
+      --            cmd = { '/home/ali/mnt/project/code/git/c3-lsp/server/bin/c3lsp' },
+      --            filetypes = { 'c3', 'c3i' },
+      --            root_dir = function(fname)
+      --              return util.find_git_ancestor(fname)
+      --            end,
+      --            settings = {},
+      --            name = 'c3_lsp',
+      --          },
+      --        }
+      --      end
+      --      lspconfig.c3_lsp.setup {}
       -- Ensure the servers and tools above are installed
       --  To check the current status of installed tools and/or manually install
       --  other tools, you can run
